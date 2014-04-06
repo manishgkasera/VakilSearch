@@ -1,27 +1,39 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Help your users find a lawyer! We've got a list of lawyers (CSV) with the following information:
 
-Things you may want to cover:
+Lawyer Code, Lawyer Name, Years of Experience, Location(City) and Average Rating
 
-* Ruby version
+and another CSV with
 
-* System dependencies
+Lawyer Code, Service Code, Service Name, Charges for Service (Rupees)
 
-* Configuration
+Your mission is to build a Rails web app, that displays a UI to the user. The user should be able to select their city and the service (or if you're feeling adventurous, services) that they want. The app should then display a list of feasible lawyers to the user.
 
-* Database creation
 
-* Database initialization
+Setup:
 
-* How to run the test suite
+* Ruby version: 2.1
 
-* Services (job queues, cache servers, search engines, etc.)
+* Rails version: 4.0.3
 
-* Deployment instructions
+* Database: Mysql
 
-* ...
+* Search: Solr
+
+Install:
+
+* Install Ruby, Rails
+
+* bundle install
+
+* rake sunspot:solr:start
+
+* rake db:setup //this will import the sample data too
+
+* rake sunspot:solr:reindex
+
+* rails server
 
 
 Please feel free to use a different markup language if you do not plan to run
