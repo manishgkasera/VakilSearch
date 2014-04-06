@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Experiance</th>
+    <th>Location</th>
+    <th>Average Rating</th>
+  </tr>
+  <% for lawyer in @lawyers %>
+    <tr>
+      <td><%= lawyer.code %></td>
+      <td><%= lawyer.name %></td>
+      <td><%= lawyer.experiance %></td>
+      <td><%= lawyer.location_id %></td>
+      <td><%= lawyer.average_rating %></td>
+      <td><%= link_to "Show", lawyer %></td>
+      <td><%= link_to "Edit", edit_lawyer_path(lawyer) %></td>
+      <td><%= link_to "Destroy", lawyer, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
