@@ -3,4 +3,6 @@ class Service < ActiveRecord::Base
 
   validates_presence_of :code, :name, :charge
   validates_uniqueness_of :code
+
+  cleanse_before_save :name, :code
 end

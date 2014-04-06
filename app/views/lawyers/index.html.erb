@@ -1,21 +1,40 @@
-<table>
+<h1 class='lawyers'>Searching Lawyers</h1>
+<div class="col-lg-6 pull-right well">
+  <%= form_tag lawyers_path, method: :get do %>
+    <div class="col-lg-5">
+      <%= select_tag :city, options_for_select(@cities, selected: params[:city]), prompt: 'Select City', class: 'form-control' %>
+    </div>
+    <div class="col-lg-5">
+      <%= select_tag :service_code, options_for_select(@services, selected: params[:service_code]), prompt: 'Select Service', class: 'form-control col-lg-4' %>
+    </div>
+
+    <%= submit_tag 'Search', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<table class='table table-bordered table-hover'>
   <tr>
     <th>Code</th>
     <th>Name</th>
-    <th>Experiance</th>
-    <th>Location</th>
+    <th>Experiance (Years)</th>
+    <th>City</th>
     <th>Average Rating</th>
+    <th>Services</th>
   </tr>
   <% for lawyer in @lawyers %>
     <tr>
       <td><%= lawyer.code %></td>
       <td><%= lawyer.name %></td>
       <td><%= lawyer.experiance %></td>
-      <td><%= lawyer.location_id %></td>
+      <td><%= lawyer.city %></td>
       <td><%= lawyer.average_rating %></td>
-      <td><%= link_to "Show", lawyer %></td>
-      <td><%= link_to "Edit", edit_lawyer_path(lawyer) %></td>
-      <td><%= link_to "Destroy", lawyer, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <% lawyer.services.each do |s| %>
+          <div class="label label-default">
+            <%= s.name %>
+          </div>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
+<%= will_paginate @lawyers, renderer: BootstrapPagination::Rails, class: 'pull-right' %>

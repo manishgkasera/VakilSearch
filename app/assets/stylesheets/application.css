@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
  */
-.form-control{
+.home .form-control{
   margin-bottom: 15px;
+}
+h1.lawyers{
+  display: inline;
 }

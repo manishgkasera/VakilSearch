@@ -4,11 +4,7 @@ VakilSearch::Application.routes.draw do
 
   root 'home#index'
 
-  resources :lawyers, only: [:index, :show] do
-    collection do
-      get 'search', as: :search
-    end
-  end
+  resources :lawyers, only: [:index, :show]
 
   resources :services, only: [:index] do
     collection do

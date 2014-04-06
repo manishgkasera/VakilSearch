@@ -44,3 +44,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem "nifty-generators", :group => :development
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
+gem 'will_paginate-bootstrap'
