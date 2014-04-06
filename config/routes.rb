@@ -2,11 +2,11 @@ VakilSearch::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'lawyers#index'
+  root 'home#index'
 
-  resources :lawyers, only: [:index] do
+  resources :lawyers, only: [:index, :show] do
     collection do
-      get 'search'
+      get 'search', as: :search
     end
   end
 

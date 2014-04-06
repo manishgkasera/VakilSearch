@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-4 col-md-offset-4">
+    <div class="well bs-component">
+      <%= form_tag search_lawyers_path, method: :get, class: 'form-horizontal' do %>
+        <fieldset>
+          <legend>Search Lawyers</legend>
+
+          <%= select_tag :city, options_for_select(@cities), prompt: 'Select City', class: 'form-control' %>
+          <%= select_tag :service, options_for_select(@services), prompt: 'Select Service', class: 'form-control' %>
+
+          <%= submit_tag 'Search', class: 'btn btn-primary' %>
+        </fieldset>
+      <% end %>
+    <div class="btn btn-primary btn-xs" id="source-button" style="display: none;">&lt; &gt;</div></div>
+  </div>
+</div>
