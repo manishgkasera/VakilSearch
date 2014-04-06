@@ -11,16 +11,17 @@ require 'csv'
 locations = {}
 lawyers = {}
 CSV.read('db/seeds/Lawyers City List.csv', headers: true).each do |row|
-  location = if locations[row[' Location']]
-    locations[row[' Location']]
+  city = row[' Location'].squish
+  location = if locations[city]
+    locations[city]
   else
-    locations[row[' Location']] = Location.create!(city: row[' Location'])
+    locations[city] = Location.create!(city: city)
   end
 
-  lawyer = Lawyer.create! code: row['Lawyer Code'],
-                          name: row[' Lawyer Name'],
-                          experiance:  row[' Years of Experience'],
-                          average_rating: row[' Average Rating'],
+  lawyer = Lawyer.create! code: row['Lawyer Code'].squish,
+                          name: row[' Lawyer Name'].squish,
+                          experiance:  row[' Years of Experience'].to_i,
+                          average_rating: row[' Average Rating'].to_f,
                           location: location
 
   lawyers[lawyer.code] = lawyer
@@ -28,10 +29,11 @@ end
 
 services = {}
 CSV.read('db/seeds/Lawyer Service List.csv', headers: true).each do |row|
-  lawyer = lawyers[row['Lawyer Code']]
-  service = services[row[' Service Code']] || lawyer.services.create!(code: row[' Service Code'],
-                                                                      name: row[' Service Name'],
-                                                                      charge: row[' Charges'])
+  lawyer = lawyers[row['Lawyer Code'].squish]
+  service_code = row[' Service Code'].squish
+  service = services[service_code] || lawyer.services.create!(code: service_code,
+                                                                      name: row[' Service Name'].squish,
+                                                                      charge: row[' Charges'].to_f)
   lawyer.services << service
   services[service.code] ||= service
 end
