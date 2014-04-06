@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Charge</th>
+  </tr>
+  <% for service in @services %>
+    <tr>
+      <td><%= service.code %></td>
+      <td><%= service.name %></td>
+      <td><%= service.charge %></td>
+      <td><%= link_to "Show", service %></td>
+      <td><%= link_to "Edit", edit_service_path(service) %></td>
+      <td><%= link_to "Destroy", service, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
